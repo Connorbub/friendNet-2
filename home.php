@@ -70,6 +70,14 @@ if (isset($_SESSION['user_login'])) {
 <h2 style='text-decoration: underline; text-align: center;'>friendNet News</h2>
 </div>
 <div class='content'>
+<h1 style='font-size: 14px;'>friendNet Beta V0.6</h1>
+<p>In this update, the following features have been added...</p>
+<ul>
+<li style='margin-left: 20px;'>Minor bug fixes.</li>
+</ul>
+Make sure to stick around for future updates!
+</div>
+<div class='content'>
 <h1 style='font-size: 14px;'>friendNet Beta V0.5</h1>
 <p>In this update, the following features have been added...</p>
 <ul>

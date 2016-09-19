@@ -170,6 +170,10 @@ input[type="text"]:hover, input[type="password"]:hover {
 	border: 1px solid #006FC4;
 }
 
+input[type="text"]:focus, input[type="password"]:focus {
+	border: 1px solid #006FC4;
+}
+
 input[type="submit"] {
 	background-color: #006FC4;
 	border: 1px solid #00508D;
@@ -263,6 +267,10 @@ textarea {
 }
 
 textarea:hover {
+	border: 1px solid #006FC4;
+}
+
+textarea:focus {
 	border: 1px solid #006FC4;
 }
 

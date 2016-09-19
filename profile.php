@@ -274,6 +274,9 @@ if ($closed == 'yes') {
 <form action="/friendNet/albums/<?php echo $username; ?>" method="POST">
 <input type="submit" name="viewalbums" style="width: 202px" value="View Albums" />
 </form>
+<form action="/friendNet/view_niches.php?u=<?php echo $username; ?>" method="POST">
+<input type="submit" name="viewniches" style="width: 202px" value="View Niches" />
+</form>
 <?php
 if ($username == $user) {
 	?>

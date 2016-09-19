@@ -25,7 +25,6 @@ $total_numrows = $unread_numrows + $requests_numrows + $pokes_numrows;
 		<title>friendNet</title>
 		<link rel="icon" type="image/ico" href="/friendNet/img/favicon.ico">
 		<link rel="stylesheet" type="text/css" href="/friendnet/css/style.css">
-		<script src="js/main.js" type="text/javascript"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -33,6 +32,7 @@ $total_numrows = $unread_numrows + $requests_numrows + $pokes_numrows;
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 		<script src="./inc/sticky/jquery.sticky.js"></script>
+		<script src="js/main.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<div class='headerMenu'>
@@ -72,6 +72,7 @@ $total_numrows = $unread_numrows + $requests_numrows + $pokes_numrows;
 						<a href="/friendNet/my_messages.php" />Inbox ('.$unread_numrows.')</a>
 						<a href="/friendNet/friend_requests.php" />Friend Requests ('.$requests_numrows.')</a>
 						<a href="/friendNet/my_pokes.php" />Pokes ('.$pokes_numrows.')</a>
+						<a href="/friendNet/create_niche.php" />Create a Niche</a>
 					  </div>
 					</div>
 					<a href="/friendNet/logout.php" id="logout" class="menuItem"/>Log Out</a>
