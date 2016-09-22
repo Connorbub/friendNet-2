@@ -7,6 +7,17 @@ if(!isset($_SESSION["user_login"])) {
 	$user = $_SESSION["user_login"];
 }
 
+if (isset($_SESSION['user_login'])) {
+	date_default_timezone_set('America/Detroit');
+	$time = date("g:i:s A");
+	$date = date("Y-m-d");
+	$online_query = mysqli_query($connect,"UPDATE users SET online='yes' WHERE username='$user'");
+	$time_query = mysqli_query($connect,"UPDATE users SET time_last_seen='$time' WHERE username='$user'");
+	$date_query = mysqli_query($connect,"UPDATE users SET date_last_seen='$date' WHERE username='$user'");
+} else {
+
+}
+
 $get_unread_query = mysqli_query($connect,"SELECT opened FROM  pvt_messages WHERE user_to='$user' && opened='no'");
 $unread_numrows = mysqli_num_rows($get_unread_query);
 
@@ -108,5 +119,10 @@ $total_numrows = $unread_numrows + $requests_numrows + $pokes_numrows;
 					}
 				}
 			}
+			}
+
+			window.onbeforeunload = function () {
+				$.get("setoffline.php");
+				return null;
 			}
 		</script>

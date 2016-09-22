@@ -55,8 +55,8 @@ $numrows = mysqli_num_rows($get_niches);
 		        if($user == $username) {
 		        echo '
 		        <center>
-			        <form action="./<?php echo $user; ?>" method="POST">
-			        	<input type="submit" name="remove_niche_<?php echo $uid; ?>" value="Remove Niche">
+			        <form action="#" method="POST">
+			        	<input type="submit" name="remove_niche_'.$uid.'" value="Remove Niche">
 			        </form>
 		        </center>
 		        </td>

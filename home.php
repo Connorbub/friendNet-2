@@ -1,15 +1,6 @@
 <?php
 include("./inc/header.inc.php"); include("./inc/connect.inc.php");
-if (isset($_SESSION['user_login'])) {
-	date_default_timezone_set('America/Detroit');
-	$time = date("g:i:s A");
-	$date = date("Y-m-d");
-	$online_query = mysqli_query($connect,"UPDATE users SET online='yes' WHERE username='$user'");
-	$time_query = mysqli_query($connect,"UPDATE users SET time_last_seen='$time' WHERE username='$user'");
-	$date_query = mysqli_query($connect,"UPDATE users SET date_last_seen='$date' WHERE username='$user'");
-} else {
-	header("Location: index.php");
-}
+
 ?>
 <div class='newsfeed'>
 <div class="textHeader">
@@ -70,6 +61,16 @@ if (isset($_SESSION['user_login'])) {
 <h2 style='text-decoration: underline; text-align: center;'>friendNet News</h2>
 </div>
 <div class='content'>
+<h1 style='font-size: 14px;'>friendNet Beta V0.7</h1>
+<p>In this update, the following features have been added...</p>
+<ul>
+<li style='margin-left: 20px;'>Finally added <a href="create_niche.php"><b>niches</b></a>! Hooray!</li>
+<li style='margin-left: 20px;'>Share photos and text with your friends within your niche.</li>
+<li style='margin-left: 20px;'>Soon to be added are private niches, video uploads, and URLs.</li>
+</ul>
+Make sure to stick around for future updates!
+</div>
+<div class='content'>
 <h1 style='font-size: 14px;'>friendNet Beta V0.6</h1>
 <p>In this update, the following features have been added...</p>
 <ul>
@@ -87,7 +88,7 @@ Make sure to stick around for future updates!
 </ul>
 Make sure to stick around for future updates!
 </div>
-<div class='content'>
+<!-- <div class='content'>
 <h1 style='font-size: 14px;'>friendNet Beta V0.4</h1>
 <p>In this update, the following features have been added...</p>
 <ul>
@@ -96,7 +97,7 @@ Make sure to stick around for future updates!
 <li style='margin-left: 20px;'>Improved Styling and UI.</li>
 </ul>
 Make sure to stick around for future updates!
-</div>
+</div> -->
 <!-- <div class='content'>
 <h1 style='font-size: 14px;'>friendNet Beta V0.3</h1>
 <p>In this update, the following features have been added...</p>

@@ -35,15 +35,25 @@ if ($_GET['id'] != "") {
             <?php
             $post = @$_POST['post'];
             if (isset($_POST['send'])) {
+              if ($user != "") {
+                $attached_image = @$_FILES['photoinput']['name'];
                 if ($post != "") {
+                    $attached_img = "";
+                    $slashedPost = addslashes($post);
+                    $date_added = date("Y-m-d");
+                    $added_by = $user;
+                    $niche_posting_to = $nicheuid;
+                } else if ($attached_image != "") {
                   $attached_img = "";
-                  $slashedPost = addslashes($post);
+                  $slashedPost = "";
                   $date_added = date("Y-m-d");
                   $added_by = $user;
                   $niche_posting_to = $nicheuid;
                 } else {
                   echo "Please type something to post!";
+                  break;
                 }
+
                 if (@$_FILES['photoinput']['size'] > 0) {
                   if (((@$_FILES['photoinput']['type']=="image/jpeg") || (@$_FILES['photoinput']['type']=="image/png") || (@$_FILES['photoinput']['type']=="image/gif")) && (@$_FILES['photoinput']['size'] < 999999999999999)) {
                           $chars = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890";
@@ -65,14 +75,20 @@ if ($_GET['id'] != "") {
               } else {
                 $attached_img = "";
               }
-            $sqlCommand = "INSERT INTO niche_posts VALUES('','$slashedPost','$date_added','$added_by','$niche_posting_to', '$attached_img')";
-            $query1 = mysqli_query($connect, "INSERT INTO photos VALUE('', '$nicheuid', '$user', '$date', '$slashedPost', '$attached_img', 'no', '$img_id')");
-            $query = mysqli_query($connect, $sqlCommand) or die(mysqli_error($connect));
             if ($attached_img == "") {
-              echo "Posted successfully!";
+              $sqlCommand = "INSERT INTO niche_posts VALUES('','$slashedPost','$date_added','$added_by','$niche_posting_to', '$attached_img')";
+              $query = mysqli_query($connect, $sqlCommand) or die(mysqli_error($connect));
+              echo "<br />Posted successfully!";
             } else {
               echo "Image posted successfully!";
+              $sqlCommand = "INSERT INTO niche_posts VALUES('','$slashedPost','$date_added','$added_by','$niche_posting_to', '$attached_img')";
+              $query1 = mysqli_query($connect, "INSERT INTO photos VALUE('', '$nicheuid', '$user', '$date', '$slashedPost', '$attached_img', 'no', '$img_id')");
+              $query = mysqli_query($connect, $sqlCommand) or die(mysqli_error($connect));
             }
+
+          } else {
+            echo "You must be logged in!";
+          }
 
           }
 
