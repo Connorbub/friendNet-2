@@ -54,6 +54,8 @@ if ($_GET['id'] != "") {
                   break;
                 }
 
+                $error = False;
+
                 if (@$_FILES['photoinput']['size'] > 0) {
                   if (((@$_FILES['photoinput']['type']=="image/jpeg") || (@$_FILES['photoinput']['type']=="image/png") || (@$_FILES['photoinput']['type']=="image/gif")) && (@$_FILES['photoinput']['size'] < 999999999999999)) {
                           $chars = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890";
@@ -62,6 +64,7 @@ if ($_GET['id'] != "") {
 
                         if (file_exists("userdata/niche_user_photos/$rand_dir_name/".@$_FILES['photoinput']["name"])) {
                           echo @$_FILES['photoinput']["name"]."already exists! Please try again.";
+                          $error = True;
                         } else {
                           move_uploaded_file(@$_FILES["photoinput"]["tmp_name"], "userdata/niche_user_photos/$rand_dir_name/".$_FILES["photoinput"]["name"]);
                           $profile_pic_name = @$_FILES["photoinput"]["name"];
@@ -71,15 +74,16 @@ if ($_GET['id'] != "") {
                   }
                 } else {
                   echo "Your image is either too big or not a photo file!";
+                  $error = True;
                 }
               } else {
                 $attached_img = "";
               }
-            if ($attached_img == "") {
+            if ($attached_img == "" && $error == False) {
               $sqlCommand = "INSERT INTO niche_posts VALUES('','$slashedPost','$date_added','$added_by','$niche_posting_to', '$attached_img')";
               $query = mysqli_query($connect, $sqlCommand) or die(mysqli_error($connect));
               echo "<br />Posted successfully!";
-            } else {
+            } else if ($error == False) {
               echo "Image posted successfully!";
               $sqlCommand = "INSERT INTO niche_posts VALUES('','$slashedPost','$date_added','$added_by','$niche_posting_to', '$attached_img')";
               $query1 = mysqli_query($connect, "INSERT INTO photos VALUE('', '$nicheuid', '$user', '$date', '$slashedPost', '$attached_img', 'no', '$img_id')");
@@ -207,7 +211,8 @@ if ($_GET['id'] != "") {
             }
 
           function link() {
-              $("#post").append("[url=' ' text=' ']");
+            var post = document.getElementById("post");
+              $("#post").val($("#post").val() + "[url=' ' text=' ']");
           }
   		</script>
 
